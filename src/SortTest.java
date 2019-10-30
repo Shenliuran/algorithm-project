@@ -6,8 +6,17 @@ public final class SortTest {
     private int seqLength = 0;
     private void init(int seqLength) { sequence = new Comparable[seqLength]; this.seqLength = seqLength; }
 
+    /**
+     * default constructor
+     */
     public SortTest() {}
 
+    /**
+     * 
+     * @param seqLength the number of comparable object
+     * @param seed  the random seed
+     * @param classType the object which extends comparable interface
+     */
     public SortTest(int seqLength, Random seed, Comparable classType) {
         init(seqLength);
         if (classType instanceof Number) {
@@ -20,6 +29,11 @@ public final class SortTest {
         }
     }
 
+    /**
+     * 
+     * @param seqLength the number of comparable object
+     * @param classType the object which extends comparable interface
+     */
     public SortTest(int seqLength, Comparable classType) {
         init(seqLength);
         if (classType instanceof Number) {
@@ -32,11 +46,19 @@ public final class SortTest {
         }
     }
 
+    /**
+     * 
+     * @param sequence
+     */
     public static void show(Comparable[] sequence) {
     List<? extends Comparable> list = Arrays.asList(sequence);
         System.out.println(list);
     }
 
+    /**
+     * 
+     * @return the clone object
+     */
     public SortTest copy() {
         SortTest temp = new SortTest();
         temp.seqLength = this.seqLength;
@@ -44,35 +66,44 @@ public final class SortTest {
         return temp;
     }
 
+    /**
+     * 
+     * @param generator generate comparable sequence
+     * @param sortType method of sort
+     * @param repeatTimes times of repeat
+     */
     public static void test(SortTest generator, BasicSort sortType, int repeatTimes) {
         TaskMonitor monitor = new TaskMonitor();
         sortType.setMonitor(monitor);
-        long avgTimes = 0;
+        long[] avg = new long[3];
+        for (int i = 0; i < 3; i++)
+            avg[i] = 0;
+        System.out.println("Begin");
+        System.out.println(sortType.getClass().getName() + ":");
+        System.out.println("Repeat times: " + repeatTimes);
         for (int i = 0; i < repeatTimes; i++) {
-            
+            monitor.taskBegin();
+            sortType.sort(generator.sequence);
+            monitor.taskEnd();
+            avg[monitor.SEQ_VISIT_BIT] += monitor.getSeqVisits() / repeatTimes;
+            avg[monitor.OPERATE_BIT] += monitor.getOperateTimes() / repeatTimes;
+            avg[monitor.TIMECOST_BIT] += monitor.getTimeCost() / repeatTimes;
         }
+        System.out.println("average sequence visits: " + avg[monitor.SEQ_VISIT_BIT]);
+        System.out.println("average compare times: " + avg[monitor.OPERATE_BIT]);
+        System.out.println("average time cost: " + avg[monitor.TIMECOST_BIT]);
+        System.out.println("End");
+        System.out.println();
     }
 
     public static void main(String[] args) {
         SortTest test1 = new SortTest(20000, new Random(), new Integer(0));
         SortTest test2 = test1.copy();
 
-
-
-        TaskMonitor monitor = new TaskMonitor();
         BasicSort sortType = new Insertion();
-        sortType.setMonitor(monitor);
-        monitor.taskBegin("Insertion");
-        sortType.sort(test1.sequence);
-        monitor.taskEnd(monitor);
+        test(test1, sortType, 2);
 
-
-
-        TaskMonitor monitor2 = new TaskMonitor();
         BasicSort sortType2 = new Selection();
-        sortType2.setMonitor(monitor2);
-        monitor2.taskBegin("Selection");
-        sortType2.sort(test2.sequence);
-        monitor2.taskEnd(monitor2);
+        test(test2, sortType2, 2);
     }
 }
