@@ -4,7 +4,7 @@ public class Selection extends BasicSort {
         this.monitor = monitor;
     }
     @Override
-    public void sort(Comparable[] sequence) {
+    public void sort(Comparable<?>[] sequence) {
         int len = sequence.length;
         for (int i = 0; i < len; i++) {
             for (int j = i + 1; j < len; j++) {

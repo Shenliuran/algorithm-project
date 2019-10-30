@@ -1,9 +1,11 @@
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.*;
 
 public final class SortTest {
-    public Comparable[] sequence;
+    public Comparable<?>[] sequence;
     private int seqLength = 0;
+
     private void init(int seqLength) { sequence = new Comparable[seqLength]; this.seqLength = seqLength; }
 
     /**
@@ -17,7 +19,7 @@ public final class SortTest {
      * @param seed  the random seed
      * @param classType the object which extends comparable interface
      */
-    public SortTest(int seqLength, Random seed, Comparable classType) {
+    public SortTest(int seqLength, Random seed, Comparable<?> classType) {
         init(seqLength);
         if (classType instanceof Number) {
             for (int i = 0; i < seqLength; i++)
@@ -34,7 +36,7 @@ public final class SortTest {
      * @param seqLength the number of comparable object
      * @param classType the object which extends comparable interface
      */
-    public SortTest(int seqLength, Comparable classType) {
+    public SortTest(int seqLength, Comparable<?> classType) {
         init(seqLength);
         if (classType instanceof Number) {
             for (int i = 0; i < seqLength; i++)
@@ -50,8 +52,8 @@ public final class SortTest {
      * 
      * @param sequence
      */
-    public static void show(Comparable[] sequence) {
-    List<? extends Comparable> list = Arrays.asList(sequence);
+    public static void show(Comparable<?>[] sequence) {
+    List<Comparable<?>> list = Arrays.asList(sequence);
         System.out.println(list);
     }
 

@@ -5,7 +5,7 @@ public class Insertion extends BasicSort {
         this.monitor = monitor;
     }
     @Override
-    public void sort(Comparable[] a) {
+    public void sort(Comparable<?>[] a) {
         int len = a.length;
         for (int i = 1; i < len; i++) {
             for (int j = i; j > 0; j--) {
