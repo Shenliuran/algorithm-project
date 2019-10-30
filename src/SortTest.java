@@ -44,15 +44,6 @@ public final class SortTest {
         return temp;
     }
 
-    public static void test(SortTest generator, BasicSort sortType, int repeatTimes) {
-        TaskMonitor monitor = new TaskMonitor();
-        sortType.setMonitor(monitor);
-        long avgTimes = 0;
-        for (int i = 0; i < repeatTimes; i++) {
-            
-        }
-    }
-
     public static void main(String[] args) {
         SortTest test1 = new SortTest(20000, new Random(), new Integer(0));
         SortTest test2 = test1.copy();

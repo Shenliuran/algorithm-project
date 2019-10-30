@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "code-runner.executorMap": {
+        "java": "cd $dir && javac -encoding utf-8 -cp '.;d:\\Table\\algs4.jar' -d d:\\Table\\java_project\\vs_code\\algorithm\\classes $fileName && cd d:\\Table\\java_project\\vs_code\\algorithm\\classes && java -cp '.;d:\\Table\\algs4.jar' $fileNameWithoutExt && cd $dir"
+    }
+}
