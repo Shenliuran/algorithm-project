@@ -1,6 +1,4 @@
-import java.io.*;
 import java.util.*;
-import java.util.concurrent.*;
 
 public final class SortTest {
     public Comparable<?>[] sequence;
@@ -23,11 +21,11 @@ public final class SortTest {
         init(seqLength);
         if (classType instanceof Number) {
             for (int i = 0; i < seqLength; i++)
-                sequence[i] = seed.nextInt(seqLength) + 1;
+                sequence[i] = Integer.valueOf(seed.nextInt(seqLength) + 1);
         }
         else if (classType instanceof String) {
             for (int i = 0; i < seqLength; i++)
-                sequence[i] = (char)(seed.nextInt(seqLength) + 97);
+                sequence[i] = Integer.valueOf(seed.nextInt(seqLength) + 97);
         }
     }
 
@@ -40,11 +38,11 @@ public final class SortTest {
         init(seqLength);
         if (classType instanceof Number) {
             for (int i = 0; i < seqLength; i++)
-                sequence[i] = i + 1;
+                sequence[i] = Integer.valueOf(i + 1);
         }
         else if (classType instanceof String) {
             for (int i = 0; i < seqLength; i++)
-                sequence[i] = (char)(i + 97);
+                sequence[i] = String.valueOf(i + 97);
         }
     }
 
@@ -99,7 +97,8 @@ public final class SortTest {
     }
 
     public static void main(String[] args) {
-        SortTest test1 = new SortTest(20000, new Random(), new Integer(0));
+        Integer integer = 0;
+        SortTest test1 = new SortTest(20000, new Random(), integer);
         SortTest test2 = test1.copy();
 
         BasicSort sortType = new Insertion();

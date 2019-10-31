@@ -1,6 +1,7 @@
 public interface Sortable {
     public void sort(Comparable<?>[] sequence);
-    default public boolean less(Comparable<?> v, Comparable<?> w) {
+    @SuppressWarnings("unchecked")
+    default public boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) <= 0;
     }
     default public void exch(Comparable<?>[] sequence, int i, int j) {
