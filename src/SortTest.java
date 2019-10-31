@@ -1,9 +1,9 @@
-import java.io.*;
 import java.util.*;
 
 public final class SortTest {
-    public Comparable[] sequence;
+    public Comparable<?>[] sequence;
     private int seqLength = 0;
+
     private void init(int seqLength) { sequence = new Comparable[seqLength]; this.seqLength = seqLength; }
 
     /**
@@ -17,15 +17,15 @@ public final class SortTest {
      * @param seed  the random seed
      * @param classType the object which extends comparable interface
      */
-    public SortTest(int seqLength, Random seed, Comparable classType) {
+    public SortTest(int seqLength, Random seed, Comparable<?> classType) {
         init(seqLength);
         if (classType instanceof Number) {
             for (int i = 0; i < seqLength; i++)
-                sequence[i] = seed.nextInt(seqLength) + 1;
+                sequence[i] = Integer.valueOf(seed.nextInt(seqLength) + 1);
         }
         else if (classType instanceof String) {
             for (int i = 0; i < seqLength; i++)
-                sequence[i] = (char)(seed.nextInt(seqLength) + 97);
+                sequence[i] = Integer.valueOf(seed.nextInt(seqLength) + 97);
         }
     }
 
@@ -34,15 +34,15 @@ public final class SortTest {
      * @param seqLength the number of comparable object
      * @param classType the object which extends comparable interface
      */
-    public SortTest(int seqLength, Comparable classType) {
+    public SortTest(int seqLength, Comparable<?> classType) {
         init(seqLength);
         if (classType instanceof Number) {
             for (int i = 0; i < seqLength; i++)
-                sequence[i] = i + 1;
+                sequence[i] = Integer.valueOf(i + 1);
         }
         else if (classType instanceof String) {
             for (int i = 0; i < seqLength; i++)
-                sequence[i] = (char)(i + 97);
+                sequence[i] = String.valueOf(i + 97);
         }
     }
 
@@ -50,8 +50,8 @@ public final class SortTest {
      * 
      * @param sequence
      */
-    public static void show(Comparable[] sequence) {
-    List<? extends Comparable> list = Arrays.asList(sequence);
+    public static void show(Comparable<?>[] sequence) {
+    List<Comparable<?>> list = Arrays.asList(sequence);
         System.out.println(list);
     }
 
@@ -97,7 +97,8 @@ public final class SortTest {
     }
 
     public static void main(String[] args) {
-        SortTest test1 = new SortTest(20000, new Random(), new Integer(0));
+        Integer integer = 0;
+        SortTest test1 = new SortTest(20000, new Random(), integer);
         SortTest test2 = test1.copy();
 
         BasicSort sortType = new Insertion();
