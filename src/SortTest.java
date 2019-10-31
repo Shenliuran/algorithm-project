@@ -65,7 +65,6 @@ public final class SortTest {
         temp.sequence = Arrays.copyOf(sequence, seqLength);
         return temp;
     }
-
     /**
      * 
      * @param generator generate comparable sequence
@@ -95,7 +94,6 @@ public final class SortTest {
         System.out.println("End");
         System.out.println();
     }
-
     public static void main(String[] args) {
         Integer integer = 0;
         SortTest test1 = new SortTest(20000, new Random(), integer);
