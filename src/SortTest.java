@@ -1,7 +1,7 @@
 import java.util.*;
 
 public final class SortTest {
-    public Comparable<?>[] sequence;
+    private Comparable<?>[] sequence;
     private int seqLength = 0;
 
     private void init(int seqLength) { sequence = new Comparable[seqLength]; this.seqLength = seqLength; }
@@ -9,7 +9,7 @@ public final class SortTest {
     /**
      * default constructor
      */
-    public SortTest() {}
+    private SortTest() {}
 
     /**
      * 
@@ -21,11 +21,11 @@ public final class SortTest {
         init(seqLength);
         if (classType instanceof Number) {
             for (int i = 0; i < seqLength; i++)
-                sequence[i] = Integer.valueOf(seed.nextInt(seqLength) + 1);
+                sequence[i] = seed.nextInt(seqLength) + 1;
         }
         else if (classType instanceof String) {
             for (int i = 0; i < seqLength; i++)
-                sequence[i] = Integer.valueOf(seed.nextInt(seqLength) + 97);
+                sequence[i] = seed.nextInt(seqLength) + 97;
         }
     }
 
@@ -38,7 +38,7 @@ public final class SortTest {
         init(seqLength);
         if (classType instanceof Number) {
             for (int i = 0; i < seqLength; i++)
-                sequence[i] = Integer.valueOf(i + 1);
+                sequence[i] = i + 1;
         }
         else if (classType instanceof String) {
             for (int i = 0; i < seqLength; i++)
@@ -48,7 +48,7 @@ public final class SortTest {
 
     /**
      * 
-     * @param sequence
+     * @param sequence the sequence need to be sorted
      */
     public static void show(Comparable<?>[] sequence) {
     List<Comparable<?>> list = Arrays.asList(sequence);
@@ -97,12 +97,15 @@ public final class SortTest {
     public static void main(String[] args) {
         Integer integer = 0;
         SortTest test1 = new SortTest(20000, new Random(), integer);
-        SortTest test2 = test1.copy();
+//        SortTest test2 = test1.copy();
 
-        BasicSort sortType = new Insertion();
-        test(test1, sortType, 2);
+//        BasicSort sortType = new Insertion();
+//        test(test1, sortType, 2);
 
-        BasicSort sortType2 = new Selection();
-        test(test2, sortType2, 2);
+//        BasicSort sortType2 = new Selection();
+//        test(test2, sortType2, 2);
+
+        BasicSort sortType3 = new Shell();
+        test(test1, sortType3, 2);
     }
 }

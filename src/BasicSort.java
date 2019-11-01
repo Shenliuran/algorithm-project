@@ -1,5 +1,5 @@
 public abstract class BasicSort implements Sortable {
-    private TaskMonitor monitor;
+    protected TaskMonitor monitor;
     public void setMonitor(TaskMonitor monitor) {
         this.monitor = monitor;
     }

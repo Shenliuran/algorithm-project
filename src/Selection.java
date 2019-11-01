@@ -1,8 +1,4 @@
 public class Selection extends BasicSort {
-    private TaskMonitor monitor;
-    public void setMonitor(TaskMonitor monitor) {
-        this.monitor = monitor;
-    }
     @Override
     public void sort(Comparable<?>[] sequence) {
         int len = sequence.length;
