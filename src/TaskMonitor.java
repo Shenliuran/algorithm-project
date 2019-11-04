@@ -19,11 +19,12 @@ public final class TaskMonitor  {
     public void taskEnd() {
         endTime = System.currentTimeMillis();
     }
-    public void probeIncrement(int probeType) {
+    public boolean probeIncrement(int probeType) {
         if (probeType == SEQ_VISIT_BIT)
             probe[SEQ_VISIT_BIT]++;
         else
             probe[OPERATE_BIT]++;
+        return true;
     }
 
 
