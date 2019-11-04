@@ -1,3 +1,7 @@
+import monitor.TaskMonitor;
+import sortinterface.SortType;
+import sorttype.MergenceFromTopToButton;
+
 import java.util.*;
 
 public final class SortTest {

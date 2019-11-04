@@ -1,3 +1,7 @@
+package sorttype;
+
+import sortinterface.BasicSort;
+
 public class Insertion extends BasicSort {
     @Override
     public void sort(Comparable<?>[] a) {

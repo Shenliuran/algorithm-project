@@ -1,3 +1,5 @@
+package sortinterface;
+
 public interface Sortable {
     void sort(Comparable<?>[] sequence);
     default boolean less(Comparable v, Comparable w) {

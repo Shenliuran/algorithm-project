@@ -1,3 +1,7 @@
+package sorttype;
+
+import sortinterface.Mergeable;
+
 public class MergenceFromTopToButton extends Mergeable {
     private Comparable<?>[] aux;
     /**

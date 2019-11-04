@@ -1,3 +1,7 @@
+package sortinterface;
+
+import monitor.TaskMonitor;
+
 public abstract class BasicSort implements SortType {
     public TaskMonitor monitor;
 

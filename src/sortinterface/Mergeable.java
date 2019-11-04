@@ -1,3 +1,7 @@
+package sortinterface;
+
+import monitor.TaskMonitor;
+
 public abstract class Mergeable implements SortType {
     protected TaskMonitor monitor;
 

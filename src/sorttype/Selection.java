@@ -1,3 +1,7 @@
+package sorttype;
+
+import sortinterface.BasicSort;
+
 public class Selection extends BasicSort {
     @Override
     public void sort(Comparable<?>[] sequence) {

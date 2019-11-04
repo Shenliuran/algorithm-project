@@ -1,3 +1,7 @@
+package sorttype;
+
+import sortinterface.BasicSort;
+
 public class Shell extends BasicSort {
     @Override
     public void sort(Comparable<?>[] a) {
