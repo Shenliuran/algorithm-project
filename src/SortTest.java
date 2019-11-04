@@ -25,7 +25,7 @@ public final class SortTest {
         }
         else if (classType instanceof String) {
             for (int i = 0; i < seqLength; i++)
-                sequence[i] = seed.nextInt(seqLength) + 97;
+                sequence[i] = (char)(seed.nextInt(seqLength) + 97);
         }
     }
 
@@ -42,15 +42,11 @@ public final class SortTest {
         }
         else if (classType instanceof String) {
             for (int i = 0; i < seqLength; i++)
-                sequence[i] = String.valueOf(i + 97);
+                sequence[i] = (char)(seqLength - i + 96);
         }
     }
 
-    /**
-     * 
-     * @param sequence the sequence need to be sorted
-     */
-    public static void show(Comparable<?>[] sequence) {
+    public void show() {
     List<Comparable<?>> list = Arrays.asList(sequence);
         System.out.println(list);
     }
@@ -71,7 +67,7 @@ public final class SortTest {
      * @param sortType method of sort
      * @param repeatTimes times of repeat
      */
-    public static void test(SortTest generator, BasicSort sortType, int repeatTimes) {
+    public static void test(SortTest generator, SortType sortType, int repeatTimes) {
         TaskMonitor monitor = new TaskMonitor();
         sortType.setMonitor(monitor);
         long[] avg = new long[3];
@@ -90,22 +86,15 @@ public final class SortTest {
         }
         System.out.println("average sequence visits: " + avg[monitor.SEQ_VISIT_BIT]);
         System.out.println("average compare times: " + avg[monitor.OPERATE_BIT]);
-        System.out.println("average time cost: " + avg[monitor.TIMECOST_BIT]);
+        System.out.println("average time cost: " + avg[monitor.TIMECOST_BIT] + " ms");
         System.out.println("End");
         System.out.println();
     }
     public static void main(String[] args) {
         Integer integer = 0;
-        SortTest test1 = new SortTest(20000, new Random(), integer);
-//        SortTest test2 = test1.copy();
+        SortTest test1 = new SortTest(100000, new Random(), integer);
 
-//        BasicSort sortType = new Insertion();
-//        test(test1, sortType, 2);
-
-//        BasicSort sortType2 = new Selection();
-//        test(test2, sortType2, 2);
-
-        BasicSort sortType3 = new Shell();
-        test(test1, sortType3, 2);
+        SortType sortType3 = new MergenceFromTopToButton();
+        test(test1, sortType3, 1);
     }
 }
