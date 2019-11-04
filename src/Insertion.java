@@ -1,9 +1,4 @@
 public class Insertion extends BasicSort {
-    private TaskMonitor monitor;
-    public Insertion() {}
-    public void setMonitor(TaskMonitor monitor) {
-        this.monitor = monitor;
-    }
     @Override
     public void sort(Comparable<?>[] a) {
         int len = a.length;
