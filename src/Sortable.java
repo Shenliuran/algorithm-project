@@ -1,6 +1,5 @@
 public interface Sortable {
     public void sort(Comparable<?>[] sequence);
-    @SuppressWarnings("unchecked")
     default public boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) <= 0;
     }

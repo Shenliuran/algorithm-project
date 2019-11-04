@@ -1,7 +1,8 @@
-public abstract class BasicSort implements Sortable {
-    protected TaskMonitor monitor;
+public abstract class BasicSort implements SortType {
+    public TaskMonitor monitor;
+
+    @Override
     public void setMonitor(TaskMonitor monitor) {
         this.monitor = monitor;
     }
-    public TaskMonitor getMonitor() { return monitor; }
 }
